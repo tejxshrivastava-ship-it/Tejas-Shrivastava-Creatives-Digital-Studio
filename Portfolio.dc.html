@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #f3ece7; color: #241c20; font-family: 'Space Grotesk', sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #241c20; color: #f3ece7; }
+  a { color: #241c20; text-decoration: none; }
+  a:hover { color: #b0604c; }
+  @keyframes dcHeroDrift { 0% { transform: scale(1.08) translate(0,0); } 50% { transform: scale(1.14) translate(-1.5%, -1%); } 100% { transform: scale(1.08) translate(0,0); } }
+  @keyframes dcScrollY { 0% { background-position-y: 0; } 100% { background-position-y: -220px; } }
+  @keyframes dcMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes dcBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+</style>
+</helmet>
+
+<div style="width: 100%; overflow-x: hidden; background: #f3ece7;">
+
+  <!-- ===================== HEADER ===================== -->
+  <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: rgba(247,239,233,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid #e2d2cb;">
+    <a href="#top" style="display: flex; flex-direction: column; line-height: 1.05;">
+      <span style="font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">Tejas Shrivastava</span>
+      <span style="font-size: 10.5px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: #96837c;">Creatives &amp; Digital Studio</span>
+    </a>
+    <nav style="display: flex; align-items: center; gap: 30px;">
+      <a href="#work" style="font-size: 13px; letter-spacing: 0.05em; color: #544744;">Work</a>
+      <a href="#creatives" style="font-size: 13px; letter-spacing: 0.05em; color: #544744;">Creatives</a>
+      <a href="#about" style="font-size: 13px; letter-spacing: 0.05em; color: #544744;">About</a>
+      <a href="#contact" style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: 0.05em; padding: 9px 18px; border-radius: 100px; border: 1px solid #241c20; color: #241c20;" style-hover="background: #241c20; color: #f3ece7;">Start a project</a>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="top" style="position: relative; height: 100vh; min-height: 620px; width: 100%; overflow: hidden; display: flex;">
+    <!-- animated fallback behind video (shows until hero.mp4 exists) -->
+    <div style="position: absolute; inset: 0; background: linear-gradient(120deg, #2a2226 0%, #5a3d3a 38%, #b0796d 62%, #3a2b2c 100%); animation: dcHeroDrift 22s ease-in-out infinite; transform-origin: center;"></div>
+    <video ref="{{ videoRef }}" autoplay="" muted="" loop="" playsinline="" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <!-- scrim for legibility -->
+    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(36,24,28,{{ scrim }}) 0%, rgba(36,24,28,0.18) 46%, rgba(36,24,28,0.32) 100%);"></div>
+
+    <!-- hero content -->
+    <div style="position: relative; z-index: 2; width: 100%; max-width: 1400px; margin: 0 auto; padding: 132px 40px 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
+      <div style="font-size: 12px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(247,239,233,0.72); margin-bottom: 26px;">Portfolio — Independent Studio · 2026</div>
+      <h1 style="font-family: 'Instrument Serif', serif; font-weight: 400; color: #f7efe9; font-size: clamp(45px, 9vw, 138px); line-height: 0.92; letter-spacing: -0.01em; max-width: 15ch">Digital work <br>that <br><span style="font-style: italic; color: rgb(168, 83, 46);">moves</span> people.</h1>
+      <p style="margin-top: 26px; max-width: 46ch; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.55; color: rgba(247,239,233,0.86); font-weight: 300;">I'm Tejas — a creatives &amp; digital studio designing and building websites and moving image for brands that would rather be felt than just seen.</p>
+      <div style="margin-top: 38px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+        <a href="#work" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 100px; background: {{ accent }}; color: #fff; font-size: 14px; font-weight: 500; letter-spacing: 0.02em;">View selected work
+          <span style="display: inline-block; width: 18px; height: 18px;">↓</span>
+        </a>
+        <a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 100px; border: 1px solid rgba(247,239,233,0.5); color: #f3ece7; font-size: 14px; font-weight: 500;">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- scroll hint -->
+    <div style="position: absolute; z-index: 2; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; animation: dcBob 2.6s ease-in-out infinite;">
+      <span style="font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(247,239,233,0.66);">Scroll</span>
+      <span style="width: 1px; height: 34px; background: linear-gradient(rgba(247,239,233,0.7), rgba(247,239,233,0));"></span>
+    </div>
+  </section>
+
+  <!-- ===================== WORK ===================== -->
+  <section id="work" style="max-width: 1400px; margin: 0 auto; padding: 108px 40px 96px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; border-bottom: 1px solid #e2d2cb; padding-bottom: 30px; margin-bottom: 56px;">
+      <div style="max-width: 640px;">
+        <div style="font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 18px;">01 — Selected Work</div>
+        <h2 style="font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(34px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.01em;">Websites built to be lived in, not just looked at.</h2>
+      </div>
+      <p style="max-width: 340px; font-size: 15px; line-height: 1.6; color: #544744; font-weight: 300;">Three recent builds — designed end to end, animated in the browser, and shipped to load fast and scroll like silk.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <!-- WEBSITE A -->
+      <div style="display: flex; flex-direction: column;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2d2cb; background: #fff; box-shadow: 0 18px 40px -28px rgba(42,26,30,0.5);">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 11px 14px; background: #ecdfd9; border-bottom: 1px solid #e2d2cb;">
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="margin-left: 12px; font-size: 10px; letter-spacing: 0.08em; color: #96837c; font-family: 'Space Grotesk', monospace;">website-a.com</span>
+          </div>
+          <div style="position: relative; height: 340px; background-image: repeating-linear-gradient(135deg, #ecdfd9 0px, #ecdfd9 11px, #e2d0c9 11px, #e2d0c9 22px); background-size: auto 220px; animation: dcScrollY 9s linear infinite;">
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); padding: 7px 12px; border-radius: 100px; background: rgba(36,24,28,0.72); color: #f3ece7; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-family: 'Space Grotesk', monospace;">Scroll video →</div>
+          </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <h3 style="font-size: 19px; font-weight: 500;">Aperture</h3>
+            <span style="font-size: 12px; color: #96837c;">Editorial / Web</span>
+          </div>
+          <p style="margin-top: 8px; font-size: 13.5px; line-height: 1.55; color: #786660; font-weight: 300;">A photography journal with a full-bleed reader and scroll-linked motion.</p>
+        </div>
+      </div>
+
+      <!-- WEBSITE B -->
+      <div style="display: flex; flex-direction: column;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2d2cb; background: #fff; box-shadow: 0 18px 40px -28px rgba(42,26,30,0.5);">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 11px 14px; background: #ecdfd9; border-bottom: 1px solid #e2d2cb;">
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="margin-left: 12px; font-size: 10px; letter-spacing: 0.08em; color: #96837c; font-family: 'Space Grotesk', monospace;">website-b.com</span>
+          </div>
+          <div style="position: relative; height: 340px; background-image: repeating-linear-gradient(135deg, #ecdfd9 0px, #ecdfd9 11px, #e2d0c9 11px, #e2d0c9 22px); background-size: auto 220px; animation: dcScrollY 11s linear infinite;">
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); padding: 7px 12px; border-radius: 100px; background: rgba(36,24,28,0.72); color: #f3ece7; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-family: 'Space Grotesk', monospace;">Scroll video →</div>
+          </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <h3 style="font-size: 19px; font-weight: 500;">Fold &amp; Co.</h3>
+            <span style="font-size: 12px; color: #96837c;">Commerce / Web</span>
+          </div>
+          <p style="margin-top: 8px; font-size: 13.5px; line-height: 1.55; color: #786660; font-weight: 300;">A modern storefront where product films do the selling above the fold.</p>
+        </div>
+      </div>
+
+      <!-- WEBSITE C -->
+      <div style="display: flex; flex-direction: column;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e2d2cb; background: #fff; box-shadow: 0 18px 40px -28px rgba(42,26,30,0.5);">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 11px 14px; background: #ecdfd9; border-bottom: 1px solid #e2d2cb;">
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #d6c2bb;"></span>
+            <span style="margin-left: 12px; font-size: 10px; letter-spacing: 0.08em; color: #96837c; font-family: 'Space Grotesk', monospace;">website-c.com</span>
+          </div>
+          <div style="position: relative; height: 340px; background-image: repeating-linear-gradient(135deg, #ecdfd9 0px, #ecdfd9 11px, #e2d0c9 11px, #e2d0c9 22px); background-size: auto 220px; animation: dcScrollY 8s linear infinite;">
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); padding: 7px 12px; border-radius: 100px; background: rgba(36,24,28,0.72); color: #f3ece7; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-family: 'Space Grotesk', monospace;">Scroll video →</div>
+          </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <h3 style="font-size: 19px; font-weight: 500;">Northbound</h3>
+            <span style="font-size: 12px; color: #96837c;">Brand / Web</span>
+          </div>
+          <p style="margin-top: 8px; font-size: 13.5px; line-height: 1.55; color: #786660; font-weight: 300;">A studio site with a living homepage and case studies that unfold as you read.</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 26px; font-size: 12px; color: #a49d8c; font-family: 'Space Grotesk', monospace;">↳ drop each project's screen-recording into the frames (website-a.mp4, website-b.mp4, website-c.mp4)</p>
+  </section>
+
+  <!-- ===================== CREATIVES ===================== -->
+  <section id="creatives" style="background: #241c20; color: #f3ece7; padding: 104px 0 108px; overflow: hidden;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 52px;">
+      <div style="max-width: 640px;">
+        <div style="font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 18px;">02 — Creatives</div>
+        <h2 style="font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(34px, 4.4vw, 62px); line-height: 1.02; color: #f7efe9;">Motion, reels &amp; short-form that keep moving.</h2>
+      </div>
+      <p style="max-width: 340px; font-size: 15px; line-height: 1.6; color: rgba(247,239,233,0.66); font-weight: 300;">An always-on strip of recent creative work — ads, title sequences and social cuts, sliding past on their own.</p>
+    </div>
+
+    <!-- auto-sliding marquee of sibling frames -->
+    <div style="width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);">
+      <div style="display: flex; gap: 22px; width: max-content; animation: dcMarquee {{ marqueeDur }} linear infinite;">
+        <!-- set 1 -->
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px); border: 1px solid #34302700;"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 01 — Ad film</div></div>
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px);"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 02 — Titles</div></div>
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px);"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 03 — Social</div></div>
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px);"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 04 — Product</div></div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px);"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 01 — Ad film</div></div>
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px);"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 02 — Titles</div></div>
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px);"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 03 — Social</div></div>
+        <div style="flex: 0 0 auto; width: 280px; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; position: relative; background-image: repeating-linear-gradient(135deg, #2a2126 0px, #2a2126 12px, #322d24 12px, #322d24 24px);"><div style="position: absolute; left: 14px; bottom: 14px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,239,233,0.7); font-family: 'Space Grotesk', monospace;">Reel 04 — Product</div></div>
+      </div>
+    </div>
+    <p style="max-width: 1400px; margin: 24px auto 0; padding: 0 40px; font-size: 12px; color: rgba(247,239,233,0.4); font-family: 'Space Grotesk', monospace;">↳ replace each panel with a looping vertical video (reel-01.mp4 …)</p>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" style="max-width: 1400px; margin: 0 auto; padding: 108px 40px 96px;">
+    <div style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center;">
+      <div style="position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; border: 1px solid #e2d2cb; box-shadow: 0 30px 60px -40px rgba(42,26,30,0.55);">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="tejas-photo" shape="rect" fit="cover" placeholder="Drop your portrait" hint-size="100%,100%"></x-import>
+      </div>
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 22px;">03 — About</div>
+        <h2 style="font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(32px, 4vw, 56px); line-height: 1.04; letter-spacing: -0.01em; max-width: 18ch;">Hi, I'm Tejas Shrivastava.</h2>
+        <p style="margin-top: 26px; max-width: 54ch; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.65; color: #463d3b; font-weight: 300;">I'm an independent designer and film-maker running a small creatives &amp; digital studio out of India. I work end to end — strategy, design, build and motion — so the thing that ships actually feels the way it was meant to.</p>
+        <p style="margin-top: 18px; max-width: 54ch; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.65; color: #463d3b; font-weight: 300;">I like a small number of projects, done properly: close collaboration, honest timelines, and a bias for work that's felt before it's explained.</p>
+        <div style="margin-top: 34px; display: flex; gap: 44px; flex-wrap: wrap;">
+          <div>
+            <div style="font-family: 'Instrument Serif', serif; font-size: 40px; line-height: 1; color: {{ accent }};">6+</div>
+            <div style="margin-top: 8px; font-size: 12px; letter-spacing: 0.06em; color: #786660;">years designing &amp; shipping</div>
+          </div>
+          <div>
+            <div style="font-family: 'Instrument Serif', serif; font-size: 40px; line-height: 1; color: {{ accent }};">40+</div>
+            <div style="margin-top: 8px; font-size: 12px; letter-spacing: 0.06em; color: #786660;">sites &amp; films delivered</div>
+          </div>
+          <div>
+            <div style="font-family: 'Instrument Serif', serif; font-size: 40px; line-height: 1; color: {{ accent }};">1:1</div>
+            <div style="margin-top: 8px; font-size: 12px; letter-spacing: 0.06em; color: #786660;">direct, no middle layer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT / FORM ===================== -->
+  <section id="contact" style="background: #ecdfd9; border-top: 1px solid #e2d2cb;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 104px 40px 104px; display: grid; grid-template-columns: 1fr 1fr; gap: 72px;">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 22px;">04 — Contact</div>
+        <h2 style="font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(38px, 5vw, 74px); line-height: 0.98; letter-spacing: -0.01em;">Let's make<br>something<span style="font-style: italic; color: {{ accent }};"> good.</span></h2>
+        <p style="margin-top: 26px; max-width: 42ch; font-size: 16px; line-height: 1.6; color: #544744; font-weight: 300;">Tell me a little about the project and where you're headed. I reply to everything within a day or two.</p>
+        <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 16px;">
+          <a href="tel:+910000000000" style="display: flex; align-items: center; gap: 14px; font-size: 15px;"><span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #96837c; width: 92px;">Phone</span> +91 00000 00000 · WhatsApp</a>
+          <a href="mailto:hello@tejas.studio" style="display: flex; align-items: center; gap: 14px; font-size: 15px;"><span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #96837c; width: 92px;">Email</span> hello@tejas.studio</a>
+          <a href="#top" style="display: flex; align-items: center; gap: 14px; font-size: 15px;"><span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #96837c; width: 92px;">Social</span> LinkedIn · Instagram</a>
+        </div>
+      </div>
+
+      <div style="background: #f7efe9; border: 1px solid #e2d2cb; border-radius: 14px; padding: 38px;">
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display: flex; flex-direction: column; gap: 22px;">
+            <label style="display: flex; flex-direction: column; gap: 9px;">
+              <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #786660;">Your name</span>
+              <input type="text" required="" placeholder="Jane Doe" style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; padding: 13px 4px; border: none; border-bottom: 1px solid #d6c2bb; background: transparent; outline: none; color: #241c20;" style-focus="border-bottom-color: #241c20;">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 9px;">
+              <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #786660;">Phone number</span>
+              <input type="tel" required="" placeholder="+91 00000 00000" style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; padding: 13px 4px; border: none; border-bottom: 1px solid #d6c2bb; background: transparent; outline: none; color: #241c20;" style-focus="border-bottom-color: #241c20;">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 9px;">
+              <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #786660;">Email</span>
+              <input type="email" required="" placeholder="you@company.com" style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; padding: 13px 4px; border: none; border-bottom: 1px solid #d6c2bb; background: transparent; outline: none; color: #241c20;" style-focus="border-bottom-color: #241c20;">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 9px;">
+              <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #786660;">About the project</span>
+              <textarea rows="3" placeholder="A few lines on what you're making…" style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; padding: 13px 4px; border: none; border-bottom: 1px solid #d6c2bb; background: transparent; outline: none; resize: vertical; color: #241c20;" style-focus="border-bottom-color: #241c20;"></textarea>
+            </label>
+            <button type="submit" style="margin-top: 6px; align-self: flex-start; padding: 15px 30px; border-radius: 100px; border: none; background: {{ accent }}; color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer;">Send it over →</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="min-height: 340px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+            <div style="font-family: 'Instrument Serif', serif; font-size: 44px; line-height: 1; color: {{ accent }};">Thank you.</div>
+            <p style="margin-top: 18px; font-size: 16px; line-height: 1.6; color: #544744; max-width: 34ch;">Your note's in. I'll get back to you within a day or two — talk soon.</p>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background: #241c20; color: #f3ece7; padding: 66px 40px 40px;">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; gap: 50px; flex-wrap: wrap;">
+      <div style="max-width: 420px;">
+        <div style="font-family: 'Instrument Serif', serif; font-size: 30px; line-height: 1.05;">Tejas Shrivastava</div>
+        <div style="margin-top: 6px; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(247,239,233,0.55);">Creatives &amp; Digital Studio</div>
+        <p style="margin-top: 20px; font-size: 14px; line-height: 1.6; color: rgba(247,239,233,0.6); font-weight: 300;">Websites &amp; moving image for brands that want to be felt. Available for select projects in 2026.</p>
+      </div>
+      <div style="display: flex; gap: 64px; flex-wrap: wrap;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,239,233,0.45); margin-bottom: 4px;">Sections</div>
+          <a href="#work" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">Work</a>
+          <a href="#creatives" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">Creatives</a>
+          <a href="#about" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">About</a>
+          <a href="#contact" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">Contact</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,239,233,0.45); margin-bottom: 4px;">Elsewhere</div>
+          <a href="#top" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">LinkedIn</a>
+          <a href="#top" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">Instagram</a>
+          <a href="mailto:hello@tejas.studio" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">Gmail</a>
+          <a href="tel:+910000000000" style="font-size: 14px; color: rgba(247,239,233,0.82);" style-hover="color: #fff;">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1400px; margin: 46px auto 0; padding-top: 22px; border-top: 1px solid rgba(247,239,233,0.14); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 12px; color: rgba(247,239,233,0.45);">
+      <span>© 2026 Tejas Shrivastava. All rights reserved.</span>
+      <span>Designed &amp; built in-house.</span>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#b0604c&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#b0604c&quot;,&quot;#9a4a3c&quot;,&quot;#89696b&quot;,&quot;#6d4a52&quot;],&quot;section&quot;:&quot;Theme&quot;},&quot;heroScrim&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.85,&quot;min&quot;:0,&quot;max&quot;:0.85,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;creativesSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:48,&quot;min&quot;:18,&quot;max&quot;:80,&quot;step&quot;:2,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { submitted: false };
+  videoRef = React.createRef();
+  componentDidMount() {
+    const v = this.videoRef.current;
+    if (v) {
+      v.muted = true;
+      v.defaultMuted = true;
+      v.volume = 0;
+      v.loop = true;
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    }
+  }
+  renderVals() {
+    const accent = this.props.accentColor ?? '#b0604c';
+    const scrim = this.props.heroScrim ?? 0.5;
+    const marqueeDur = (this.props.creativesSpeed ?? 44) + 's';
+    return {
+      videoRef: this.videoRef,
+      accent,
+      scrim,
+      marqueeDur,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

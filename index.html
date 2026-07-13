@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tejas Shrivastava</title>
+  <meta name="description" content="Specialized creative & digital studio building high-end web experiences and creative systems.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #ffffff; color: #111111; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    ::selection { background: #111111; color: #ffffff; }
+    a { color: #111111; text-decoration: none; }
+    a:hover { color: #111111; }
+
+    @keyframes dcMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ---------- Hover / focus states (compiled from style-hover / style-focus) ---------- */
+    .nav-link:hover { text-decoration: underline; text-underline-offset: 6px; }
+    .work-url:hover { color: #111111 !important; }
+    .field:focus { border-color: #111111 !important; }
+    .social:hover { color: #ffffff !important; background: #111111 !important; border-color: #111111 !important; }
+
+    /* ---------- Scroll reveal ---------- */
+    .r-rev { opacity: 0; transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+    .r-rev-l { transform: translateX(-40px); }
+    .r-rev-r { transform: translateX(40px); transition-delay: 0.12s; }
+    .r-rev.is-in { opacity: 1; transform: translateX(0); }
+    .r-rev-l.is-in video { transform: scale(1) !important; }
+    @media (prefers-reduced-motion: reduce) { .r-rev { opacity: 1 !important; transform: none !important; } }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1100px) {
+      .r-wgrid { grid-template-columns: 1fr !important; gap: 28px !important; }
+      .r-agrid { grid-template-columns: 1fr !important; gap: 36px !important; align-items: start !important; }
+      .r-cgrid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .r-sub { display: none !important; }
+      .r-wgrid > div[style*="aspect-ratio: 16/9"] { order: -1; }
+      .r-wgrid > div[style*="min-height: 320px"] { min-height: 0 !important; }
+      .r-agrid .r-rev-r { overflow: visible !important; }
+      #work div[style*="position: sticky"] { position: static !important; }
+    }
+    @media (max-width: 900px) {
+      .r-navlinks { display: none !important; }
+    }
+    @media (max-width: 760px) {
+      .r-navbar { padding: 0 20px !important; }
+      .r-hero { padding: 0 20px 44px !important; }
+      .r-hero h1 { white-space: normal !important; }
+      .r-sec { padding: 56px 20px !important; }
+      .r-sec-cre { padding: 36px 0 48px !important; }
+      .r-crehead { padding: 0 20px 24px !important; flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+      .r-crehead > div:last-child { flex: 1 1 auto !important; max-width: 100% !important; }
+      .r-cgrid { padding: 56px 20px !important; }
+      .r-foot { padding: 40px 20px 28px !important; }
+      .r-wgrid { padding: 18px !important; gap: 18px !important; }
+      .r-whead { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; margin-bottom: 32px !important; }
+      .r-reel { width: 220px !important; }
+    }
+    @media (max-width: 480px) {
+      .r-wfoot { flex-direction: column !important; align-items: flex-start !important; gap: 14px !important; }
+      .r-foot-top { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; min-height: 0 !important; }
+      .r-reel { width: 190px !important; }
+    }
+  </style>
+</head>
+<body>
+<div style="width: 100%; background: #ffffff;">
+
+  <!-- ===================== PRIMARY NAV ===================== -->
+  <header style="position: sticky; top: 0; z-index: 50; background: #ffffff; box-shadow: inset 0 -1px 0 #e5e5e5;">
+    <div class="r-navbar" style="width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="#top" style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">Tejas Shrivastava</span>
+      </a>
+      <nav class="r-navlinks" style="display: flex; align-items: center; gap: 32px;">
+        <a href="#work" class="nav-link" style="font-size: 16px; font-weight: 500; color: #111111;">Work</a>
+        <a href="#creatives" class="nav-link" style="font-size: 16px; font-weight: 500; color: #111111;">Creatives</a>
+        <a href="#about" class="nav-link" style="font-size: 16px; font-weight: 500; color: #111111;">About</a>
+        <a href="#contact" class="nav-link" style="font-size: 16px; font-weight: 500; color: #111111;">Contact</a>
+      </nav>
+      <div class="r-navcta" style="display: flex; align-items: center; gap: 14px;">
+        <a href="#contact" style="display: inline-flex; align-items: center; height: 44px; padding: 0 26px; border-radius: 9999px; background: #111111; color: #ffffff; font-size: 15px; font-weight: 500;">Start a project</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== CAMPAIGN HERO ===================== -->
+  <section id="top" style="position: relative; height: 100vh; min-height: 640px; width: 100%; overflow: hidden; display: flex;">
+    <div style="position: absolute; inset: 0; background: #111111;"></div>
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.05) 55%, rgba(17,17,17,0.28) 100%);"></div>
+
+    <div class="r-hero" style="position: relative; z-index: 2; width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 40px 72px; display: flex; flex-direction: column; justify-content: flex-end;">
+      <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.82); margin-bottom: 22px">SPECIALIZED CREATIVE &amp; DIGITAL STUDIO</div>
+      <h1 style="font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-weight: 400; color: #ffffff; font-size: clamp(52px, 8.5vw, 128px); line-height: 0.9; letter-spacing: 0.01em; text-transform: uppercase; max-width: 22ch; white-space: nowrap;">HIGH-END<br>WEB EXPERIENCES<br>&amp; CREATIVE SYSTEMS.</h1>
+      <div style="margin-top: 36px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <a href="#work" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 32px; border-radius: 9999px; background: #ffffff; color: #111111; font-size: 16px; font-weight: 500;">View selected work</a>
+        <a href="#contact" style="display: inline-flex; align-items: center; height: 52px; padding: 0 4px; color: #ffffff; font-size: 16px; font-weight: 500; text-decoration: underline; text-underline-offset: 6px;">Get in touch</a>
+      </div>
+    </div>
+
+    <div style="position: absolute; z-index: 2; right: 40px; bottom: 30px; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7);">Scroll ↓</div>
+  </section>
+
+  <!-- ===================== SELECTED WORK ===================== -->
+  <section id="work" class="r-sec" style="max-width: 1440px; margin: 0 auto; padding: 96px 40px 72px;">
+    <div class="r-whead" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 44px;">
+      <div>
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #707072; margin-bottom: 14px;">01 / Selected Work</div>
+        <h2 style="font-size: clamp(28px, 3.6vw, 44px); font-weight: 600; line-height: 1.04; letter-spacing: -0.02em; text-align: left">High-performance architecture <br>wrapped in premium aesthetics.</h2>
+      </div>
+      <a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 28px; border-radius: 9999px; background: #f5f5f5; color: #111111; font-size: 16px; font-weight: 500; white-space: nowrap;">Start yours</a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 40px;">
+      <!-- CARD 1 -->
+      <div style="position: sticky; top: 84px;">
+        <div style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; align-items: stretch; background: #ffffff; border: 1px solid #e5e5e5; border-radius: 24px; padding: 32px; box-shadow: 0 -1px 0 #ffffff;" class="r-wgrid">
+          <div style="display: flex; flex-direction: column; align-self: stretch; min-height: 320px; justify-content: space-between;">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1; color: #cacacb;">01</div>
+              <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #707072;">Event Platform / Web</div>
+            </div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 5.2vw, 80px); line-height: 0.88; text-transform: uppercase; margin: 20px 0 18px;">Shark Sports</div>
+            <p style="max-width: 46ch; font-size: 15px; line-height: 1.55; color: #707072; margin-bottom: auto; text-align: justify">Engineered a clear, user-focused digital ecosystem to streamline sports and event bookings. Blended interactive elements with highly structured navigation to drive daily operations and user engagement.</p>
+            <div class="r-wfoot" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid #e5e5e5; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+              <a href="https://sharksports.co.in" target="_blank" rel="noopener" class="work-url" style="font-size: 14px; font-weight: 500; letter-spacing: 0.01em; color: #707072;">sharksports.co.in ↗</a>
+              <a href="https://sharksports.co.in" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 20px; border-radius: 9999px; background: #111111; color: #ffffff; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;">View project →</a>
+            </div>
+          </div>
+          <div style="position: relative; aspect-ratio: 16/9; background: #f5f5f5; overflow: hidden; border-radius: 16px;">
+            <div style="position: absolute; bottom: 16px; left: 16px; z-index: 2; background: #ffffff; border: 1px solid #cacacb; border-radius: 9999px; padding: 5px 12px; font-size: 12px; font-weight: 500;">Motion</div>
+            <video class="dc-work-vid" autoplay muted loop playsinline preload="metadata" src="work-1.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 2 -->
+      <div style="position: sticky; top: 104px;">
+        <div style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; align-items: stretch; background: #ffffff; border: 1px solid #e5e5e5; border-radius: 24px; padding: 32px; box-shadow: 0 -1px 0 #ffffff;" class="r-wgrid">
+          <div style="display: flex; flex-direction: column; align-self: stretch; min-height: 320px; justify-content: space-between;">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1; color: #cacacb;">02</div>
+              <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #707072;">Brand Experience / Web</div>
+            </div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 5.2vw, 80px); line-height: 0.88; text-transform: uppercase; margin: 20px 0 18px;">Go Big Hospitality</div>
+            <p style="max-width: 46ch; font-size: 15px; line-height: 1.55; color: #707072; margin-bottom: auto; text-align: justify">Translated complex F&amp;B consulting visions into a premium, structured digital experience. Built the complete web architecture to establish strong market authority and capture high-ticket inquiries.</p>
+            <div class="r-wfoot" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid #e5e5e5; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+              <a href="https://gobighospitality.com" target="_blank" rel="noopener" class="work-url" style="font-size: 14px; font-weight: 500; letter-spacing: 0.01em; color: #707072;">gobighospitality.com ↗</a>
+              <a href="https://gobighospitality.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 20px; border-radius: 9999px; background: #111111; color: #ffffff; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;">View project →</a>
+            </div>
+          </div>
+          <div style="position: relative; aspect-ratio: 16/9; background: #f5f5f5; overflow: hidden; border-radius: 16px;">
+            <div style="position: absolute; bottom: 16px; left: 16px; z-index: 2; background: #ffffff; border: 1px solid #cacacb; border-radius: 9999px; padding: 5px 12px; font-size: 12px; font-weight: 500;">Immersive</div>
+            <video class="dc-work-vid" autoplay muted loop playsinline preload="metadata" src="work-2.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 3 -->
+      <div style="position: sticky; top: 124px;">
+        <div style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; align-items: stretch; background: #ffffff; border: 1px solid #e5e5e5; border-radius: 24px; padding: 32px; box-shadow: 0 -1px 0 #ffffff;" class="r-wgrid">
+          <div style="display: flex; flex-direction: column; align-self: stretch; min-height: 320px; justify-content: space-between;">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1; color: #cacacb;">03</div>
+              <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #707072;">E-Commerce / Web</div>
+            </div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 5.2vw, 80px); line-height: 0.88; text-transform: uppercase; margin: 20px 0 18px;">Powder Beauty</div>
+            <p style="max-width: 46ch; font-size: 15px; line-height: 1.55; color: #707072; margin-bottom: auto; text-align: justify">Architected a high-conversion digital storefront optimized for seamless checkout and product discovery. Engineered the infrastructure to directly accelerate sales and elevate visual brand positioning.</p>
+            <div class="r-wfoot" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid #e5e5e5; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+              <a href="https://powderbeauty.com" target="_blank" rel="noopener" class="work-url" style="font-size: 14px; font-weight: 500; letter-spacing: 0.01em; color: #707072;">powderbeauty.com ↗</a>
+              <a href="https://powderbeauty.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 20px; border-radius: 9999px; background: #111111; color: #ffffff; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;">View project →</a>
+            </div>
+          </div>
+          <div style="position: relative; aspect-ratio: 16/9; background: #f5f5f5; overflow: hidden; border-radius: 16px;">
+            <div style="position: absolute; bottom: 16px; left: 16px; z-index: 2; background: #ffffff; border: 1px solid #cacacb; border-radius: 9999px; padding: 5px 12px; font-size: 12px; font-weight: 500;">Commerce</div>
+            <video class="dc-work-vid" autoplay muted loop playsinline preload="metadata" src="work-3.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CREATIVES RAIL ===================== -->
+  <section id="creatives" class="r-sec-cre" style="padding: 48px 0 72px;">
+    <div class="r-crehead" style="max-width: 1440px; margin: 0 auto; padding: 0 40px 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; flex-wrap: wrap;">
+      <div style="flex: 1 1 0; min-width: 240px;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #707072; margin-bottom: 14px;">02 / Creatives</div>
+        <h2 style="font-size: clamp(28px, 3.6vw, 44px); font-weight: 600; line-height: 1.04; letter-spacing: -0.02em">Conversion-driven <br>media &amp; ad creatives.</h2>
+      </div>
+      <div style="flex: 0 0 360px; max-width: 360px; font-size: 15px; font-weight: 500; color: #707072; line-height: 1.55; text-align: justify">Supplying high-quality visual assets to fuel your Meta and Google campaigns. From static imagery to dynamic motion work, designed specifically to capture attention and scale your brand.</div>
+    </div>
+
+    <div style="overflow: hidden; width: 100%;">
+      <div style="display: flex; width: max-content; gap: 16px; padding: 0 40px; animation: dcMarquee 60s linear infinite;">
+        <!-- reel rail: 8 unique items, doubled for a seamless loop -->
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-1.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-2.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-3.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><img src="reel-img-1.jpg" alt="" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-4.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-5.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-6.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><img src="reel-img-2.jpg" alt="" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-1.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-2.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-3.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><img src="reel-img-1.jpg" alt="" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-4.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-5.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><video class="dc-reel-vid" autoplay muted loop playsinline preload="metadata" src="reel-6.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #111111;"></video></div>
+        <div class="r-reel" style="flex: 0 0 auto; width: 260px; aspect-ratio: 9/16; background: #f5f5f5; position: relative; overflow: hidden; border-radius: 20px;"><img src="reel-img-2.jpg" alt="" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="r-sec" style="max-width: 1440px; margin: 0 auto; padding: 72px 40px;">
+    <div class="r-agrid" style="display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: stretch;">
+      <div class="r-rev r-rev-l" style="position: relative; width: 100%; aspect-ratio: 1/1; background: #111111; overflow: hidden; border-radius: 20px;">
+        <video class="dc-work-vid" autoplay muted loop playsinline preload="metadata" src="about.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 1.4s cubic-bezier(.16,1,.3,1);"></video>
+      </div>
+      <div class="r-rev r-rev-r" style="display: flex; flex-direction: column; justify-content: center; min-height: 0; overflow: hidden;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #707072; margin-bottom: 16px;">03 / About</div>
+        <h2 style="font-size: clamp(30px, 4vw, 52px); font-weight: 600; line-height: 1.02; letter-spacing: -0.02em; max-width: 20ch;">Hi, I'm Tejas Shrivastava.</h2>
+        <p style="margin-top: 22px; font-size: 17px; line-height: 1.6; color: #39393b; text-align: justify">My background is rooted in both logic and scale, holding dual degrees in Electronics Engineering and Economics from BITS Pilani, Goa. I operate a digital studio out of India, working directly with founders to build platforms that solve complex operational problems.</p>
+        <p style="margin-top: 16px; font-size: 17px; line-height: 1.6; color: #39393b; text-align: justify">By uniting technical web architecture with high-end creative pipelines, I maintain strict quality control over every detail of a project. This seamless approach allows me to deliver clean, revenue-focused digital systems that function exactly as intended.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" style="background: #f5f5f5; box-shadow: inset 0 1px 0 #e5e5e5;">
+    <div class="r-cgrid" style="max-width: 1440px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px;">
+      <div>
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #707072; margin-bottom: 18px;">04 / Contact</div>
+        <h2 style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(52px, 6vw, 104px); line-height: 0.9; letter-spacing: 0.005em; text-transform: uppercase;">GET IN TOUCH.</h2>
+        <p style="margin-top: 22px; max-width: 42ch; font-size: 16px; line-height: 1.55; color: #39393b; text-align: justify">Please feel free to leave a brief message below to get things started, and I'll reach out to schedule a convenient time for us to connect.</p>
+        <div style="margin-top: 34px; display: flex; flex-direction: column; gap: 14px;">
+          <a href="tel:+919575270453" style="display: flex; align-items: center; gap: 16px; font-size: 15px; font-weight: 500;"><span style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #707072; width: 84px;">Phone</span> +91 95752 70453 · +91 93997 34130</a>
+          <a href="mailto:tejxshrivastava@gmail.com" style="display: flex; align-items: center; gap: 16px; font-size: 15px; font-weight: 500;"><span style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #707072; width: 84px;">Email</span> tejxshrivastava@gmail.com</a>
+          <a href="https://www.linkedin.com/in/tejas-shrivastava/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 16px; font-size: 15px; font-weight: 500;"><span style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #707072; width: 84px;">Social</span> LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div>
+        <form id="contactForm" style="display: flex; flex-direction: column; gap: 14px;">
+          <!-- Web3Forms: paste the access key you get (free) from https://web3forms.com — it must be created with tejxshrivastava@gmail.com so submissions land in that inbox. -->
+          <input type="hidden" name="access_key" value="20aee1d4-c575-409b-95b0-ca95db61ccea">
+          <input type="hidden" name="subject" value="New enquiry from tejasshrivastava.com">
+          <input type="hidden" name="from_name" value="tejasshrivastava.com">
+          <!-- Honeypot spam filter (hidden from users) -->
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none;">
+          <input type="text" name="name" required placeholder="Your name" class="field" style="font-family: 'Inter', sans-serif; font-size: 16px; height: 52px; padding: 0 20px; border: 2px solid transparent; border-radius: 24px; background: #ffffff; outline: none; color: #111111;">
+          <input type="tel" name="phone" required placeholder="Phone number" class="field" style="font-family: 'Inter', sans-serif; font-size: 16px; height: 52px; padding: 0 20px; border: 2px solid transparent; border-radius: 24px; background: #ffffff; outline: none; color: #111111;">
+          <input type="email" name="email" required placeholder="Email" class="field" style="font-family: 'Inter', sans-serif; font-size: 16px; height: 52px; padding: 0 20px; border: 2px solid transparent; border-radius: 24px; background: #ffffff; outline: none; color: #111111;">
+          <textarea name="message" rows="4" placeholder="A few initial thoughts on your business and the digital project you have in mind…" class="field" style="font-family: 'Inter', sans-serif; font-size: 16px; padding: 16px 20px; border: 2px solid transparent; border-radius: 24px; background: #ffffff; outline: none; resize: vertical; color: #111111;"></textarea>
+          <button id="contactSubmit" type="submit" style="margin-top: 4px; align-self: flex-start; height: 52px; padding: 0 34px; border-radius: 9999px; border: none; background: #111111; color: #ffffff; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; cursor: pointer;">Send it over →</button>
+          <div id="contactError" style="display: none; font-size: 14px; color: #d30005;">Something went wrong sending your message. Please email tejxshrivastava@gmail.com directly.</div>
+        </form>
+        <div id="contactThanks" style="min-height: 360px; display: none; flex-direction: column; align-items: flex-start; justify-content: center;">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 0.9; text-transform: uppercase;">Thank you.</div>
+          <p style="margin-top: 16px; font-size: 17px; line-height: 1.55; color: #39393b; max-width: 34ch;">Your note's in. I'll get back to you within a day or two — talk soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="r-foot" style="background: #ffffff; box-shadow: inset 0 1px 0 #cacacb; padding: 48px 40px 40px;">
+    <div class="r-foot-top" style="max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap; min-height: 120px;">
+      <div style="max-width: 380px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em;">Tejas Shrivastava</span>
+        </div><span class="r-sub" style="font-weight: 500; color: #707072;">Creative &amp; Digital Studio</span>
+      </div>
+      <div style="display: flex; gap: 64px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: flex-end; gap: 12px;">
+          <a href="https://www.instagram.com/tejxshrivastva/" target="_blank" rel="noopener" aria-label="Instagram" class="social" style="width: 44px; height: 44px; border: 1px solid #e5e5e5; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; color: #707072; transition: all 0.25s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/tejas-shrivastava/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social" style="width: 44px; height: 44px; border: 1px solid #e5e5e5; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; color: #707072; transition: all 0.25s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9v10.5M4.5 5.5v.01M9 19.5V13a3 3 0 0 1 6 0v6.5M9 9v10.5"></path></svg>
+          </a>
+          <a href="mailto:tejxshrivastava@gmail.com" aria-label="Email" class="social" style="width: 44px; height: 44px; border: 1px solid #e5e5e5; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; color: #707072; transition: all 0.25s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 7 8.5 6 8.5-6"></path></svg>
+          </a>
+          <a href="https://wa.me/919399734130" target="_blank" rel="noopener" aria-label="WhatsApp" class="social" style="width: 44px; height: 44px; border: 1px solid #e5e5e5; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; color: #707072; transition: all 0.25s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5 5 16a8 8 0 1 1 3 3l-4.5 1.5Z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1l-1.8-.8-.9.9c-1-.4-1.9-1.3-2.3-2.3l.9-.9L10.6 8c-.5 0-1 .4-1 1Z"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 40px auto 0; padding-top: 20px; box-shadow: inset 0 1px 0 #e5e5e5; display: flex; justify-content: center; text-align: center; gap: 20px; flex-wrap: wrap; font-size: 12px; font-weight: 500; color: #707072;">
+      <span>© 2026 Tejas Shrivastava. All rights reserved.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    // Hero video: force muted autoplay loop (browsers block audible autoplay).
+    var hero = document.getElementById('heroVideo');
+    if (hero) {
+      hero.muted = true; hero.defaultMuted = true; hero.volume = 0; hero.loop = true;
+      var hp = hero.play(); if (hp && hp.catch) hp.catch(function () {});
+    }
+
+    // Play work + reel videos only while near/in the viewport; pause off-screen.
+    var vids = document.querySelectorAll('video.dc-work-vid, video.dc-reel-vid');
+    vids.forEach(function (v) { v.muted = true; v.defaultMuted = true; v.volume = 0; v.loop = true; });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) { var q = v.play(); if (q && q.catch) q.catch(function () {}); }
+          else { try { v.pause(); } catch (err) {} }
+        });
+      }, { rootMargin: '200px 0px', threshold: 0.1 });
+      vids.forEach(function (v) { io.observe(v); });
+    } else {
+      vids.forEach(function (v) { var q = v.play(); if (q && q.catch) q.catch(function () {}); });
+    }
+
+    // Scroll-reveal for tagged elements.
+    var revs = document.querySelectorAll('.r-rev');
+    if ('IntersectionObserver' in window && revs.length) {
+      var rio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); rio.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+      revs.forEach(function (el) { rio.observe(el); });
+    } else {
+      revs.forEach(function (el) { el.classList.add('is-in'); });
+    }
+
+    // Contact form: send to Web3Forms (email relay), then swap to a thank-you message.
+    var form = document.getElementById('contactForm');
+    var thanks = document.getElementById('contactThanks');
+    var errBox = document.getElementById('contactError');
+    var submitBtn = document.getElementById('contactSubmit');
+    if (form && thanks) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (errBox) errBox.style.display = 'none';
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+        var payload = Object.fromEntries(new FormData(form).entries());
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.success) {
+            form.style.display = 'none';
+            thanks.style.display = 'flex';
+          } else {
+            throw new Error((data && data.message) || 'Submission failed');
+          }
+        })
+        .catch(function () {
+          if (errBox) errBox.style.display = 'block';
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send it over →'; }
+        });
+      });
+    }
+  })();
+</script>
+</body>
+</html>
